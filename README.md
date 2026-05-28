@@ -25,6 +25,7 @@ O sistema permite autenticação de usuários e gerenciamento de tarefas atravé
 - Respostas padronizadas com API Resources
 - Eager Loading para otimização de consultas
 - Paginação de resultados
+- Filtragem por status 
 
 ---
 
@@ -160,6 +161,8 @@ POST /api/register
   "name": "João",
   "email": "joao@email.com",
   "password": "password",
+  "password_confirmation":"password"
+
 }
 ```
 
@@ -178,8 +181,7 @@ POST /api/login
 ```json
 {
   "email": "joao@email.com",
-  "password": "password",
-  "password_confirmation": "password"
+  "password": "password"
 }
 ```
 
@@ -223,12 +225,26 @@ GET /api/tasks
 | Parâmetro | Tipo | Descrição |
 |---|---|---|
 | page | integer | Número de página |
+| filter | string | Filtra por status (pending, in_progress, completed)
 
 ### Exemplo de requisição
 
+#### Paginação 
 ``` http
 GET /api/tasks?page=1
 ```
+
+#### Buscar por Filtro
+``` http
+GET /api/tasks?filter=pending
+```
+
+#### Paginação + Filtro
+``` http
+GET /api/tasks?filter=pending&page=1
+```
+
+---
 
 ### Exemplo de resposta
 
@@ -420,12 +436,12 @@ Task::with('user')->get();
 - Código organizado e escalável
 - Consultas otimizadas com Eager Loading
 - Paginação para melhor performance e escalabilidade
+- Filtragem por status
 
 ---
 
 # 📌 Melhorias Futuras
 
-- Filtros por status
 - Upload de arquivos
 - Testes automatizados
 - Docker

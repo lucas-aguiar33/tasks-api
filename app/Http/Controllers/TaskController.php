@@ -16,7 +16,24 @@ class TaskController extends Controller
     {
         $user = $request->user();
 
-        $tasks = $user->tasks()->with('user')->paginate(5);
+        if($request->has('filter')) {
+            $filter = $request->input('filter');
+
+            $filters = ['pending', 'in_progress', 'completed'];
+
+            if(!in_array($filter, $filters)) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Filtro inválido'
+                ])->setStatusCode(422);
+            }
+
+            $tasks = $user->tasks()->with('user')->where('status', $filter)->orderBy('created_at', 'desc')->paginate(10);
+
+            return TaskResource::collection($tasks);
+        }
+
+        $tasks = $user->tasks()->with('user')->paginate(10);
 
         return TaskResource::collection($tasks);
     }
