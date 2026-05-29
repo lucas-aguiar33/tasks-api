@@ -257,21 +257,21 @@ GET /api/tasks?filter=pending&page=1
       "title": "Estudar Laravel",
       "description": "Aprender sobre API Resources",
       "status": "in_progress",
-      "created_at": "28/05/2026"
+      "created_at": "2026-05-28T13:18:04.000000Z"
     },
     {
       "id": 2,
       "title": "Criar documentação",
       "description": "Documentar endpoints da API",
       "status": "pending",
-      "created_at": "28/05/2026"
+      "created_at": "2026-05-28T13:20:44.000000Z"
     },
     {
       "id": 3,
       "title": "Implementar autenticação",
       "description": "Adicionar login com Sanctum",
       "status": "completed",
-      "created_at": "28/05/2026"
+      "created_at": "2026-05-28T13:22:01.000000Z"
     }
   ],
   "links": {
@@ -406,7 +406,7 @@ As respostas da API são padronizadas utilizando Laravel Resources.
     "title": "Estudar Laravel",
     "description": "Aprender API Resources",
     "status": "in_progress",
-    "created_at": "27/05/2026"
+    "created_at": "2026-05-27T18:22:44.000000Z"
   },
   "success": true
 }
