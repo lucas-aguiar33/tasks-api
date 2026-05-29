@@ -18,12 +18,5 @@ class Task extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-
-    protected function createdAtFormatted(): Attribute
-    {
-        return Attribute::make(
-            get: fn() => $this->created_at?->format('d/m/Y')
-        );
-    }
+    
 }
